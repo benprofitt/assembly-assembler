@@ -121,8 +121,11 @@ def line_part(line, line_num):
     offset_list[line_num] = true_offset
     lmoc = line.split()
     try:
+        # A '.' indicates that the whole line is a comment
         if (line[0] == '.'):
             return 0
+        # Checks if the first char is a space or a tab, which indicates 
+        # data is not being declared
         if (ord(line[0]) == 9 or line[0] == ' '):
             state = 0
             mnemonic = base_mn(lmoc[0])
